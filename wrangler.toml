@@ -1,8 +1,8 @@
-name = "tetrlink"
+name = "tetrlink" # name it everything you like
 main = "src/index.js"
 compatibility_date = "2022-12-22"
 
-account_id = "6430f8e52684e77726e8b3a035ce0c5d"
+account_id = ""
 workers_dev = true
 
 [[rules]]
