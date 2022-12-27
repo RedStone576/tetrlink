@@ -1,0 +1,18 @@
+{
+  "name": "tetrlink",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "wrangler dev",
+    "deploy": "wrangler publish"
+  },
+  "dependencies": {
+    "discord-interactions": "^3.2.0",
+    "hono": "^2.6.2",
+    "mongodb-data-api-fetch": "^0.1.5"
+  },
+  "devDependencies": {
+    "node-fetch": "^3.3.0"
+  }
+}
