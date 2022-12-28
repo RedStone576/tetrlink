@@ -52,7 +52,7 @@ app.post("/interactions", async (c) =>
 {
   const signature = c.req.header("x-signature-ed25519")
   const timestamp = c.req.header("x-signature-timestamp")
-    
+
   const raw     = await c.req.clone().arrayBuffer()
   const isValid = verifyKey(raw, signature, timestamp, config.DISCORD_PUBLIC_KEY)
 
@@ -89,30 +89,20 @@ app.post("/interactions", async (c) =>
     }
     
     if (message.data.name.toLowerCase() === "refresh") 
-    { 
-      await fetch(`https://discord.com/api/v10/interactions/${message.id}/${message.token}/callback`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          type: InteractionResponseType.DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE
-        })
-      })
-    
-      const h = await updateMetadata(message.member.user.id)
+    {
+      c.executionCtx.waitUntil(new Promise(async (resolve) =>
+      {
+        await updateMetadata(message.member.user.id)
+        
+        resolve()
+      }))
       
-      await fetch(`https://discord.com/api/v10/webhooks/${message.application_id}/${message.token}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          content: h
-        })
+      return c.json({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          content: contents.refresh
+        }
       })
-      
-      return c.body("ok", 200)
     }
     
     return c.json({
