@@ -10,10 +10,13 @@ you first need to fill the things in `src/config.js` & `wrangler.toml` then run 
 
 ---
 
-some preview:
+some previews:
 
-![preview-1](https://i.loves-ani.me/r/prev1.png)
+![preview-1](https://cdn.discordapp.com/attachments/737992663743070278/1107364994129084546/image.png)  
+
+![preview-2](https://cdn.discordapp.com/attachments/737992663743070278/1107365328536735794/image.png)
 
 urls to plugs:
 
-![preview-2](https://i.loves-ani.me/r/prev2.png)
+![preview-3](https://cdn.discordapp.com/attachments/737992663743070278/1107365670557061140/image.png)  
+![preview-4](https://cdn.discordapp.com/attachments/737992663743070278/1107365786181443594/image.png)
